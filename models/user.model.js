@@ -16,6 +16,12 @@ let userSchema = Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post"
         }
+    ],
+    competitions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Competition"
+        }
     ]
 });
 
