@@ -1,9 +1,11 @@
 //Importing required modules
 const 
     express = require("express"),
-    app = express(),
-    bodyParser = require("body-parser");
+    bodyParser = require("body-parser"),
+    competitions = require('./routes/competitions.route'),
+    app = express();
 
+app.use('/competitions', competitions);
 
 // starting server
 const port = 3000;
