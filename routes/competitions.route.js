@@ -5,6 +5,6 @@ const router = express.Router();
 const competition_controller = require("../controllers/competition.controller");
 
 // testing if they're connected:
-router.get("/test", competition_controller.test);
+router.get("/", competition_controller.default);
 
 module.exports = router;
