@@ -8,6 +8,7 @@ const
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./models/user.model");
+    methodOverride = require("method-override");
 
 //Connecting to the DB
 mongoose.connect("mongodb://localhost:27017/ClimbingCompetitions", {
@@ -41,7 +42,38 @@ app.use(express.static("public"));
 // Competition ROUTE
 app.use('/competitions', competitions);
 
+// ==============
 //Default ROUTES
+// ==============
+
+// register
+app.get("/register", (req, res) => {
+    res.render("./default/register");
+});
+
+app.get("/register", (req, res) => {
+    res.send("registering...");
+});
+
+// login
+app.get("/login", (req, res) => {
+    res.render("./default/login");
+});
+
+app.get("/login", (req, res) => {
+    res.send("logging in...");
+});
+
+// logout
+app.get("/logout", (req, res) => {
+    req.logOut();
+    res.redirect("/");
+});
+
+// landing
+app.get("/", (req, res) => {
+    res.render("./default/landing");
+});
 
 
 // Starting server
