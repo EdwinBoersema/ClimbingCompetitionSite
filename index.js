@@ -41,6 +41,9 @@ app.use(express.static("public"));
 // Competition ROUTE
 app.use('/competitions', competitions);
 
+//Default ROUTES
+
+
 // Starting server
 const port = 3000;
 app.listen(port, () => {
