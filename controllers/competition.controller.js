@@ -3,47 +3,54 @@ const Climber = require("../models/climber.model");
 
 // default
 exports.default = (req, res) => {
-    Competition.find({}, (err, competitions) => {
-        if (err) {
-            console.log(err);
-            res.redirect("../");
-        } else {
-            res.render("/competitions/competitions", {
-                competitions: competitions
-            });
-        }
-    });
+    res.render("./competitions/competitions")
+    // Competition.find({}, (err, competitions) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.redirect("../");
+    //     } else {
+    //         res.render("./competitions/competitions", {
+    //             competitions: competitions
+    //         });
+    //     }
+    // });
 }
 
 // /new
 exports.new = (req, res) => {
-    res.render("/competitions/new");
+    res.render("./competitions/new");
+}
+
+exports.create = (req, res) => {
+    res.send("creating new competition...");
 }
 
 // /show/:id
 exports.show = (req, res) => {
-    Competition.findById(req.params.id, (err, competition) => {
-        if (err) {
-            console.log(err);
-            res.redirect("/");
-        } else {
-            res.render("/competitions/show", {
-                competition: competition
-            });
-        }
-    });
+    res.render("./competitions/show");
+    // Competition.findById(req.params.id, (err, competition) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.redirect("/");
+    //     } else {
+    //         res.render("./competitions/show", {
+    //             competition: competition
+    //         });
+    //     }
+    // });
 }
 
 // /:id/edit
 exports.edit = (req, res) => {
-    Competition.findById(req.params.id, (err, competition) => {
-        if (err) {
-            console.log(err);
-            res.redirect("/");
-        } else {
-            res.render("/competition/edit", { competition: competition });
-        }
-    });
+    res.render("./competitions/edit");
+    // Competition.findById(req.params.id, (err, competition) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.redirect("/");
+    //     } else {
+    //         res.render("./competition/edit", { competition: competition });
+    //     }
+    // });
 }
 
 // update

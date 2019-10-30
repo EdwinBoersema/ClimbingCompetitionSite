@@ -39,7 +39,10 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-// Competition ROUTE
+// ==================
+// Competition ROUTES
+// ==================
+
 app.use('/competitions', competitions);
 
 // ==============
@@ -51,7 +54,7 @@ app.get("/register", (req, res) => {
     res.render("./default/register");
 });
 
-app.get("/register", (req, res) => {
+app.post("/register", (req, res) => {
     res.send("registering...");
 });
 
@@ -60,7 +63,7 @@ app.get("/login", (req, res) => {
     res.render("./default/login");
 });
 
-app.get("/login", (req, res) => {
+app.post("/login", (req, res) => {
     res.send("logging in...");
 });
 
@@ -76,7 +79,7 @@ app.get("/", (req, res) => {
 });
 
 
-// Starting server
+// Starting server ==============================
 const port = 3000;
 app.listen(port, () => {
     console.log("server started on " + port)

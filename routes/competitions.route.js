@@ -5,15 +5,16 @@ const router = express.Router();
 const competition_controller = require("../controllers/competition.controller");
 
 // NEW ROUTE
-router.post("/new", competition_controller);
+router.get("/new", competition_controller.new);
+
+router.post("/new", competition_controller.create);
 
 // SHOW ROUTE
 router.get("/:id", competition_controller.show);
 
 // EDIT ROUTE
-router.get("/:id/edit", competition_controller);
+router.get("/:id/edit", competition_controller.edit);
 
-// UPDATE ROUTE
 router.put("/:id", competition_controller.update);
 
 // DELETE ROUTE
