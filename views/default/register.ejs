@@ -1,6 +1,30 @@
 <% include ../partials/header %>
 <% include ../partials/navbar %>
 
-<h1>Register Page</h1>
+<div class="ui container formContainer">
+        <h2>Register</h2>
+        <form action="/login" method="POST" class="ui form">
+            <div class="field">
+                <input type="text" name="username" placeholder="Name">
+            </div>
+            <div class="field">
+                <select name="gender">
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                    <option value="">none</option>
+                </select>
+            </div>
+            <div class="field">
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" class="hidden">
+                    <label>I agree to the Terms and Conditions</label>
+                </div>
+            </div>
+            <input class="ui button" type="submit" value="Register">
+        </form>
+    </div>
 
 <% include ../partials/footer %>
