@@ -1,23 +1,37 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let climberSchema = Schema({
+let climberSchema = new Schema({
     name: {type: String, required: true},
     gender: {type: String, required: true},
     dob: {type: Date, required: true},
     nationality: {type: String},
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
     },
     scores: [
         {
-            name: {type: String, required: true},
-            date: {type: String, required: true},
-            qual1: String,
-            qual2: String,
-            semi: String,
-            final: String
+            name: { type: String, required: true},
+            qual1: {
+                score: String,
+                date: Date
+            },
+            qual2: {
+                score: String,
+                date: Date
+            },
+            semi: {
+                score: String,
+                date: Date
+            },
+            final: {
+                score: String,
+                date: Date
+            }
         }
     ]
 });

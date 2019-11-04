@@ -3,12 +3,14 @@ const
     express = require("express"),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose");
-    competitions = require('./routes/competitions.route'),
     app = express(),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./models/user.model");
     methodOverride = require("method-override");
+
+const   competitionsRoute = require('./routes/competitions.route');
+
 
 //Connecting to the DB
 mongoose.connect("mongodb://localhost:27017/ClimbingCompetitions", {
@@ -43,7 +45,7 @@ app.use(express.static("public"));
 // Competition ROUTES
 // ==================
 
-app.use('/competitions', competitions);
+app.use('/competitions', competitionsRoute);
 
 // ==============
 //Default ROUTES

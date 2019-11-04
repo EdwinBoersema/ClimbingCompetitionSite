@@ -2,25 +2,25 @@ const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 const Schema = mongoose.Schema;
 
-let userSchema = Schema({
-    name: {type: String, required: true},
-    gender: {type: String},
-    dob: {type: Date},
-    roles: [{type: String}],
+let userSchema = new Schema({
+    name: { type: String, required: true },
+    passport: String,
+    gender: { type: String },
+    roles: [{ type: String, default: "user" }],
     climber: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Climber"
-    },
-    posts: [
-        {
+        id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Post"
-        }
-    ],
+            ref: "Climber"
+        },
+        name: String
+    },
     competitions: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Competition"
+            id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Competition"
+            },
+            name: String
         }
     ]
 });
