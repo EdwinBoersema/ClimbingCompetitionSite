@@ -9,7 +9,8 @@ const
     User = require("./models/user.model");
     methodOverride = require("method-override");
 
-const   competitionsRoute = require('./routes/competitions.route');
+const   competitionsRoute = require('./routes/competitions.route'),
+        defaultRoute = require('./routes/default.route');
 
 
 //Connecting to the DB
@@ -26,7 +27,7 @@ mongoose.connect("mongodb://localhost:27017/ClimbingCompetitions", {
 
 // Passport configuration
 app.use(require("express-session")({
-    secret: "Puss in boots",
+    secret: "Puss in boots never fails to land on it's feet",
     resave: false,
     saveUninitialized: false
 }));
@@ -42,46 +43,15 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 // ==================
-// Competition ROUTES
+// ROUTES
 // ==================
 
 app.use('/competitions', competitionsRoute);
+app.use('/', defaultRoute);
 
-// ==============
-//Default ROUTES
-// ==============
-
-// register
-app.get("/register", (req, res) => {
-    res.render("./default/register");
-});
-
-app.post("/register", (req, res) => {
-    res.send("registering...");
-});
-
-// login
-app.get("/login", (req, res) => {
-    res.render("./default/login");
-});
-
-app.post("/login", (req, res) => {
-    res.send("logging in...");
-});
-
-// logout
-app.get("/logout", (req, res) => {
-    req.logOut();
-    res.redirect("/");
-});
-
-// landing
-app.get("/", (req, res) => {
-    res.render("./default/landing");
-});
-
-
-// Starting server ==============================
+// ===============
+// Starting server
+// ===============
 const port = 3000;
 app.listen(port, () => {
     console.log("server started on " + port)
