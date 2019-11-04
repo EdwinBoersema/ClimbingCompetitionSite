@@ -2,25 +2,25 @@ const express = require("express");
 const router = express.Router();
 
 // Require the controller
-const competition_controller = require("../controllers/competition.controller");
+const competitions_controller = require("../controllers/competitions.controller");
 
 // NEW ROUTE
-router.get("/new", competition_controller.new);
+router.get("/new", competitions_controller.new);
 
-router.post("/new", competition_controller.create);
+router.post("/new", competitions_controller.create);
 
 // SHOW ROUTE
-router.get("/:id", competition_controller.show);
+router.get("/:id", competitions_controller.show);
 
 // EDIT ROUTE
-router.get("/:id/edit", competition_controller.edit);
+router.get("/:id/edit", competitions_controller.edit);
 
-router.put("/:id", competition_controller.update);
+router.put("/:id", competitions_controller.update);
 
 // DELETE ROUTE
-router.delete("/:id", competition_controller.delete);
+router.delete("/:id", competitions_controller.delete);
 
 // DEFAULT ROUTE
-router.get("/", competition_controller.default);
+router.get("/", competitions_controller.default);
 
 module.exports = router;
