@@ -15,7 +15,7 @@ router.get("/login", default_controller.login);
 router.post("/login", default_controller.login_post);
 
 // LOGOUT ROUTE
-router.get("logout", default_controller.logout);
+router.get("/logout", default_controller.logout);
 
 // DEFAULT ROUTE
 router.get("/", default_controller.default);

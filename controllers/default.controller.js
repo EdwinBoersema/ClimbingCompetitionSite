@@ -23,7 +23,7 @@ exports.login_post = (req, res) => {
 // logout
 exports.logout = (req, res) => {
     req.logOut();
-    req.flash("succes", "Logged out");
+    // req.flash("succes", "Logged out");
     res.redirect("/");
 };
 
