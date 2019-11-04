@@ -10,7 +10,8 @@ const
     methodOverride = require("method-override");
 
 const   competitionsRoute = require('./routes/competitions.route'),
-        defaultRoute = require('./routes/default.route');
+        defaultRoute = require('./routes/default.route'),
+        athletesRoute = require('./routes/athletes.route');
 
 
 //Connecting to the DB
@@ -48,6 +49,7 @@ app.use(express.static("public"));
 
 app.use('/competitions', competitionsRoute);
 app.use('/', defaultRoute);
+app.use('/athletes', athletesRoute);
 
 // ===============
 // Starting server
