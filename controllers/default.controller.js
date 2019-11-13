@@ -38,12 +38,21 @@ exports.login = (req, res) => {
     res.render("./default/login");
 };
 
-exports.login_post = (passport.authenticate("local", {
-    failureRedirect: ".default/login"
-}), (req, res) => {
-    req.flash("success", "Logged in!");
-    res.redirect("/");
-});
+exports.login_post = (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
+    if (err) {
+        req.flash("error", err);
+        return res.redirect("/login");
+    } else if (!user) {
+        req.flash("error", "Invalid username or password");
+        return res.redirect("/login");
+    }
+    req.login(user, (err) => {
+        if (err) { return next(err) }
+        req.flash("success", "welcome");
+        return res.redirect("back");
+    });
+})(req, res, next)}
 
 // logout
 exports.logout = (req, res) => {

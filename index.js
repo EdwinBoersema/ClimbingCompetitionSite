@@ -30,7 +30,7 @@ mongoose.connect("mongodb://localhost:27017/ClimbingCompetitions", {
 
 // Passport configuration
 app.use(require("express-session")({
-    secret: "Puss in boots never fails to land on it's feet",
+    secret: "flaters",
     resave: false,
     saveUninitialized: false
 }));

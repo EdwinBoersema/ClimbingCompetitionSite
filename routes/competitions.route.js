@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mw = require('../middleware/index');
 
 // Require the controller
 const competitions_controller = require("../controllers/competitions.controller");
@@ -21,6 +22,6 @@ router.put("/:id", competitions_controller.update);
 router.delete("/:id", competitions_controller.delete);
 
 // DEFAULT ROUTE
-router.get("/", competitions_controller.default);
+router.get("/", mw.isLoggedIn, competitions_controller.default);
 
 module.exports = router;

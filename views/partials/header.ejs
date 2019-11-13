@@ -12,6 +12,10 @@
 </head>
 <body>
 
+    <% if (currentUser) { %>
+        <%= currentUser %>
+    <% } %>
+
     <!-- navbar -->
     <div class="ui fluid container">
         <div id="navbar" class="ui menu raised pointing">
@@ -25,15 +29,21 @@
                 Athletes
             </a>
             <div class="right menu">
+                <% if (!currentUser) { %>
                 <a href="/register" class="item">
                     Register
                 </a>
                 <a href="/login" class="item">
                     Login
                 </a>
+                <% } else { %>
+                <span>
+                    <%= currentUser.username %>
+                </span>
                 <a href="/logout" class="item">
                     Logout
                 </a>
+                <% } %>
             </div>
         </div>
     </div>
