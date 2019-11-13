@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="./css/styling.css">
 </head>
 <body>
-    
+
+    <!-- navbar -->
     <div class="ui fluid container">
         <div id="navbar" class="ui menu raised pointing">
             <a href="/" class="item">
@@ -37,4 +38,20 @@
         </div>
     </div>
 
-    
+    <!-- flash messages -->
+    <div class="ui container">
+        <% if (success && success.length > 0 ) { %>
+            <div class="ui positive message" role="alert">
+                <div>
+                    <%= success %>
+                </div>
+            </div>
+        <% } %> 
+        <% if (error && error.length > 0 ) { %>
+            <div class="ui negative message" role="alert">
+                <div>
+                    <%= error %>
+                </div>
+            </div>
+        <% } %>
+    </div>
