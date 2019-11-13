@@ -38,9 +38,11 @@ exports.login = (req, res) => {
     res.render("./default/login");
 };
 
-exports.login_post = (req, res) => {
-    res.send("logging in...");
-};
+exports.login_post = passport.authenticate("local", {
+    failureRedirect: "/login";
+}), (req, res) => {
+    req.flash("succes", "Logged in!");
+}
 
 // logout
 exports.logout = (req, res) => {
