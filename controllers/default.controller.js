@@ -1,3 +1,6 @@
+const    passport = require('passport'),
+         User = require('../models/user.model'),
+         mw = require('../middleware/index');
 
 // DEFAULT ROUTE Controller
 
@@ -8,7 +11,21 @@ exports.register = (req, res) => {
 };
 
 exports.register_post = (req, res) => {
-    res.send("registering...");
+    let newUser = new User({
+        username: req.body.username,
+        gender: req.body.gender
+    });
+    User.register(newUser, req.body.password, (err, user) => {
+        if (err) {
+            req.flash("error", err.message);
+            console.log(err);
+            return res.render("./default/register");
+        }
+        passport.authenticate("local")(req, res, () => {
+            req.flash("success", "Welcome to the Climbing Competition Database!");
+            res.redirect("/");
+        });
+    });
 };
 
 // login
