@@ -19,8 +19,8 @@ exports.register_post = (req, res) => {
         User.register(newUser, req.body.password, (err, user) => {
             if (err) {
                 req.flash("error", err.message);
-                console.log(err);
-                return res.render("./default/register");
+                console.log(err.message);
+                res.redirect("/register");
             }
             passport.authenticate("local")(req, res, () => {
                 req.flash("success", "Welcome to the Climbing Competition Database!");
@@ -29,7 +29,7 @@ exports.register_post = (req, res) => {
         });
     } else {
         req.flash("error", "Invalid register token!");
-        res.redirect("register");
+        res.redirect("/register");
     }
 };
 
@@ -41,14 +41,14 @@ exports.login = (req, res) => {
 exports.login_post = (passport.authenticate("local", {
     failureRedirect: ".default/login"
 }), (req, res) => {
-    req.flash("succes", "Logged in!");
+    req.flash("success", "Logged in!");
     res.redirect("/");
 });
 
 // logout
 exports.logout = (req, res) => {
     req.logOut();
-    // req.flash("succes", "Logged out");
+    req.flash("success", "Logged out");
     res.redirect("/");
 };
 
