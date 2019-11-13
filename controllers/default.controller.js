@@ -13,7 +13,7 @@ exports.register = (req, res) => {
 exports.register_post = (req, res) => {
     if (req.body.registerToken == "flaters") {
         let newUser = new User({
-            name: req.body.username,
+            username: req.body.username,
             gender: req.body.gender
         });
         User.register(newUser, req.body.password, (err, user) => {
@@ -38,11 +38,12 @@ exports.login = (req, res) => {
     res.render("./default/login");
 };
 
-exports.login_post = passport.authenticate("local", {
-    failureRedirect: "/login";
+exports.login_post = (passport.authenticate("local", {
+    failureRedirect: ".default/login"
 }), (req, res) => {
     req.flash("succes", "Logged in!");
-}
+    res.redirect("/");
+});
 
 // logout
 exports.logout = (req, res) => {
