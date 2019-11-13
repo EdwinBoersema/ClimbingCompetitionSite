@@ -11,21 +11,26 @@ exports.register = (req, res) => {
 };
 
 exports.register_post = (req, res) => {
-    let newUser = new User({
-        username: req.body.username,
-        gender: req.body.gender
-    });
-    User.register(newUser, req.body.password, (err, user) => {
-        if (err) {
-            req.flash("error", err.message);
-            console.log(err);
-            return res.render("./default/register");
-        }
-        passport.authenticate("local")(req, res, () => {
-            req.flash("success", "Welcome to the Climbing Competition Database!");
-            res.redirect("/");
+    if (req.body.registerToken == "flaters") {
+        let newUser = new User({
+            name: req.body.username,
+            gender: req.body.gender
         });
-    });
+        User.register(newUser, req.body.password, (err, user) => {
+            if (err) {
+                req.flash("error", err.message);
+                console.log(err);
+                return res.render("./default/register");
+            }
+            passport.authenticate("local")(req, res, () => {
+                req.flash("success", "Welcome to the Climbing Competition Database!");
+                res.redirect("/");
+            });
+        });
+    } else {
+        req.flash("error", "Invalid register token!");
+        res.redirect("register");
+    }
 };
 
 // login
