@@ -8,18 +8,18 @@ const competitions_controller = require("../controllers/competitions.controller"
 // NEW ROUTE
 router.get("/new", competitions_controller.new);
 
-router.post("/new", competitions_controller.create);
+router.post("/new", mw.isLoggedIn, competitions_controller.create);
 
 // SHOW ROUTE
 router.get("/:id", competitions_controller.show);
 
 // EDIT ROUTE
-router.get("/:id/edit", competitions_controller.edit);
+router.get("/:id/edit", mw.isLoggedIn, competitions_controller.edit);
 
-router.put("/:id", competitions_controller.update);
+router.put("/:id", mw.isLoggedIn, competitions_controller.update);
 
 // DELETE ROUTE
-router.delete("/:id", competitions_controller.delete);
+router.delete("/:id", mw.isLoggedIn, competitions_controller.delete);
 
 // DEFAULT ROUTE
 router.get("/", mw.isLoggedIn, competitions_controller.default);
