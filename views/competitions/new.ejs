@@ -1,5 +1,48 @@
 <% include ../partials/header %>
 
-<h1>Create new Competition Page</h1>
+
+<div class="ui container">
+    <form class="ui form" action="/competitions/new" method="POST">
+        <h1 class="ui dividing header centered">Create New Competition</h1>
+        <div class="field">
+            <label>Competition Name</label>
+            <input name="name" type="text" placeholder="Competition name" required>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label>Start date</label>
+                <input name="startDate" type="date" placeholder="Start date" required>
+            </div>
+            <div class="field">
+                <label>End date</label>
+                <input name="endDate" type="date" placeholder="End date" required>
+            </div>
+        </div>
+        <div class=" field">
+            <label>Info</label>
+            <textarea name="info"></textarea>
+        </div>
+        <!-- <div class=" field">
+            <label>Categories</label>
+            <input name="category[name]" type="text" placeholder="category">
+            <input name="category[gender]" type="text" placeholder="gender">
+            <div class="field">
+                <label>Climbers</label>
+                <select name="category[climbers]" multiple="" class="ui dropdown" name="climbers">
+                    <option>Climbers</option>
+                    <option value="1">Alex</option>
+                    <option value="2">Sam</option>
+                    <option value="3">Justin</option>
+                    <option value="4">Juan</option>
+                    <option value="5">Chris</option>
+                    <option value="6">Stephen</option>
+                </select>
+            </div>
+        </div> -->
+        <div class="field">
+            <input class="ui button centered" type="submit" value="Create Competition">
+        </div>
+    </form>
+</div>
 
 <% include ../partials/footer %>

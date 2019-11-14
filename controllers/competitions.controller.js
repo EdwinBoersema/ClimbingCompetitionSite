@@ -7,7 +7,28 @@ exports.new = (req, res) => {
 }
 
 exports.create = (req, res) => {
-    res.send("creating new competition...");
+    let newComp = {
+        author: {
+            id: req.user._id,
+            username: req.user.username
+        },
+        name: req.body.name,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        info: req.body.info
+    }
+    console.log(newComp);
+    Competition.create(newComp, (err, competition) => {
+        if (err) {
+            console.log(err);
+            req.flash("error", err);
+            res.redirect("/competition/new");
+        } else {
+            req.flash("success", newComp.name + " created");
+            res.redirect("/competitions");
+        }
+    });
+    
 }
 
 // SHOW
