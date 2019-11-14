@@ -6,6 +6,14 @@
     --brown: #948446;
 }
 
+a {
+    color: var(--brown);
+}
+
+a:hover {
+    color: var(--brown);
+}
+
 .compTitle {
     color: var(--brown);
 }

@@ -9,7 +9,9 @@
         <% for (let i = 0; i < competitions.length; i ++) { %>
         <div class="ui item grid compItem">
             <div class="row compTitle">
-                <h2 data-href="/competitions/<%= competitions[i]._id%>"><%= competitions[i].name %></h2>
+                <a href="/competitions/<%= competitions[i]._id%>">
+                <h2><%= competitions[i].name %></h2>
+                </a>
             </div>
             <div class="row">
                 <% for (let j = 0; j < competitions[i].category; j ++ ) { %>
@@ -21,6 +23,7 @@
             <div class="row">
                 <%= competitions[i].info %>
             </div>
+            <div></div>
         </div>
         <div class="ui divider"></div>
         <% } %>
