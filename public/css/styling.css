@@ -3,6 +3,14 @@
     --lightblue: #37B7FF;
     --lila: #EB48CC;
     --white: #E9F4F5;
-    --brown: #BA8556;
+    --brown: #948446;
 }
 
+.compTitle {
+    color: var(--brown);
+}
+
+.compCategory {
+    color: var(--lightblue);
+    background-color: var(--darkblue);
+}

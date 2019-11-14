@@ -8,13 +8,13 @@
 <div class="ui items container">
         <% for (let i = 0; i < competitions.length; i ++) { %>
         <div class="ui item grid compItem">
-            <div class="row">
-                <a href="/competitions/<%= competitions[i]._id%>"><%= competitions[i].name %></a>
+            <div class="row compTitle">
+                <h2 data-href="/competitions/<%= competitions[i]._id%>"><%= competitions[i].name %></h2>
             </div>
             <div class="row">
                 <% for (let j = 0; j < competitions[i].category; j ++ ) { %>
-                <div class="collumn">
-                    <%= competitions[i].category.name[j] %>
+                <div class="four wide collumn compCategory">
+                    <%= competitions[i].category.name[j] + " " + competitions[i].category.gender[j] %>
                 </div>
                 <% } %>
             </div>
@@ -22,6 +22,7 @@
                 <%= competitions[i].info %>
             </div>
         </div>
+        <div class="ui divider"></div>
         <% } %>
     </div>
 
