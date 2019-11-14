@@ -7,14 +7,10 @@
 
     <title>ClimbingCompetitions</title>
     
-    <link rel="stylesheet" href="./css/semantic.css">
-    <link rel="stylesheet" href="./css/styling.css">
+    <link rel="stylesheet" type="text/css" href="/css/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 <body>
-
-    <% if (currentUser) { %>
-        <%= currentUser %>
-    <% } %>
 
     <!-- navbar -->
     <div class="ui fluid container">
@@ -37,7 +33,7 @@
                     Login
                 </a>
                 <% } else { %>
-                <span>
+                <span class="item">
                     <%= currentUser.username %>
                 </span>
                 <a href="/logout" class="item">
