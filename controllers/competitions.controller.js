@@ -86,15 +86,14 @@ exports.delete = (req, res) => {
 
 // DEFAULT
 exports.default = (req, res) => {
-    res.render("./competitions/competitions")
-    // Competition.find({}, (err, competitions) => {
-    //     if (err) {
-    //         console.log(err);
-    //         res.redirect("../");
-    //     } else {
-    //         res.render("./competitions/competitions", {
-    //             competitions: competitions
-    //         });
-    //     }
-    // });
+    Competition.find({}, (err, competitions) => {
+        if (err) {
+            console.log(err);
+            res.redirect("../");
+        } else {
+            res.render("./competitions/competitions", {
+                competitions: competitions
+            });
+        }
+    });
 }

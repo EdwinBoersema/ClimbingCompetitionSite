@@ -1,9 +1,28 @@
 <% include ../partials/header %>
 
-<h1>Competitions:</h1>
 
 <div class="ui container">
-    
+    <h1>Competitions</h1>
 </div>
+
+<div class="ui items container">
+        <% for (let i = 0; i < competitions.length; i ++) { %>
+        <div class="ui item grid compItem">
+            <div class="row">
+                <a href="/competitions/<%= competitions[i]._id%>"><%= competitions[i].name %></a>
+            </div>
+            <div class="row">
+                <% for (let j = 0; j < competitions[i].category; j ++ ) { %>
+                <div class="collumn">
+                    <%= competitions[i].category.name[j] %>
+                </div>
+                <% } %>
+            </div>
+            <div class="row">
+                <%= competitions[i].info %>
+            </div>
+        </div>
+        <% } %>
+    </div>
 
 <% include ../partials/footer %>
