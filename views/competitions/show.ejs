@@ -20,6 +20,15 @@
                 <%= competition.category.name + " " + competition.category.gender %>
             </div>
             <% } %>
+            <% if(currentUser) { %>
+            <div class="row">
+                <div class="four wide collumn">
+                    <form action="/competitions/<%=competition._id%>/edit" method="get">
+                        <button class="ui button">Edit</button>
+                    </form>
+                </div>
+            </div>
+            <% } %>
         </div>
     </div>
 </div>

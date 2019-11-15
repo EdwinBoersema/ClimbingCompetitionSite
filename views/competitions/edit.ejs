@@ -1,5 +1,49 @@
 <% include ../partials/header %>
+<% include ../partials/compnav %>
 
-<h1>Competition Edit Page</h1>
+<div class="ui container">
+    <form class="ui form" action="/competitions/<%=competition._id%>?_method=PUT" method="POST">
+        <h1 class="ui dividing header centered">Edit <%=competition.name%></h1>
+        <div class="field">
+            <label>Competition Name</label>
+            <input name="name" type="text" placeholder="Competition name" required value="<%= competition.name%>">
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label>Start date</label>
+                <input name="startDate" type="datetime-local" placeholder="Start date" required value="<%=competition.startDate %>">
+            </div>
+            <div class="field">
+                <label>End date</label>
+                <input name="endDate" type="datetime-local" placeholder="End date" required value="<%=competition.endDate %>">
+            </div>
+        </div>
+        <div class=" field">
+            <label>Info</label>
+            <textarea name="info"><%=competition.info%></textarea>
+        </div>
+        <div class="field">
+            <input class="ui button centered" type="submit" value="Edit <%=competition.name%>">
+        </div>
+    </form>
+</div>
+
+<!-- <div class=" field">
+        <label>Categories</label>
+        <input name="category[name]" type="text" placeholder="category">
+        <input name="category[gender]" type="text" placeholder="gender">
+        <div class="field">
+            <label>Climbers</label>
+            <select name="category[climbers]" multiple="" class="ui dropdown" name="climbers">
+                <option>Climbers</option>
+                <option value="1">Alex</option>
+                <option value="2">Sam</option>
+                <option value="3">Justin</option>
+                <option value="4">Juan</option>
+                <option value="5">Chris</option>
+                <option value="6">Stephen</option>
+            </select>
+        </div>
+    </div> -->
 
 <% include ../partials/footer %>

@@ -6,7 +6,7 @@ exports.new = (req, res) => {
     res.render("./competitions/new");
 }
 
-exports.create = (req, res) => {
+exports.new_post = (req, res) => {
     let newComp = {
         author: {
             id: req.user._id,
@@ -48,28 +48,37 @@ exports.show = (req, res) => {
 
 // EDIT
 exports.edit = (req, res) => {
-    res.render("./competitions/edit");
-    Competition.findById(req.params.id, (err, competition) => {
+    Competition.findById(req.params.id).populate("Climbers").exec((err, competition) => {
         if (err) {
             req.flash("error", err);
             console.log(err);
             res.redirect("/");
         } else {
-            res.render("./competition/edit", { competition: competition });
+            res.render("./competitions/edit", { 
+                competition: competition 
+            });
         }
     });
 }
 
-// update
+// Update
 exports.update = (req, res) => {
-    Competition.findByIdAndUpdate(req.params.id, (err, competition) => {
+    let updatedComp = {
+        name: req.body.name,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        info: req.body.info
+    };
+    console.log("update recieved");
+    Competition.findByIdAndUpdate(req.params.id, updatedComp, (err, competition) => {
         if (err) {
             console.log(err);
             req.flash("error", err);
-            return res.redirect("/");
+            res.redirect("/competitions");
         } else {
-            req.flash("succes", "Competition updated!");
-            return res.redirect("/competitions/show/" + req.params.id);
+            console.log("update processed and redirecting to /competitions/" + req.params.id);
+            req.flash("success", "Competition updated!");
+            res.redirect("/competitions/" + req.params.id);
         }
     });
 }
@@ -79,11 +88,11 @@ exports.delete = (req, res) => {
     Competition.findByIdAndRemove(req.params.id, (err) => {
         if (err) {
             console.log(err);
-            return res.redirect("/");
+            res.redirect("/");
         } else {
             req.flash("succes", "Competition removed!");
             console.log("Competition removed!");
-            return res.redirect("/competitions");
+            res.redirect("/competitions");
         }
     });
 }
