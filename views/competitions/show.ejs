@@ -1,5 +1,27 @@
 <% include ../partials/header %>
+<% include ../partials/compnav %>
 
-<h1>Show specific Competition Page</h1>
+<div class="ui container">
+    <div class="showContainer">
+        <div class="ui grid">
+            <h1><%= competition.name %></h1>
+            <div class="row">
+                Starting date: <%= competition.startDate %>
+            </div>
+            <div class="row">
+                Starting date: <%= competition.endDate %>
+            </div>
+            <div class="ui divider"></div>
+            <div class="row">
+                <%= competition.info %>
+            </div>
+            <% for (let i = 0; i < competition.category.length; i++) { %>
+            <div class="row">
+                <%= competition.category.name + " " + competition.category.gender %>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
 
 <% include ../partials/footer %>

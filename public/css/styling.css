@@ -6,6 +6,10 @@
     --brown: #948446;
 }
 
+h1 {
+    color: var(--brown);
+}
+
 a {
     color: var(--brown);
 }
@@ -21,4 +25,8 @@ a:hover {
 .compCategory {
     color: var(--lightblue);
     background-color: var(--darkblue);
+}
+
+.showContainer {
+    margin-top: 20px;
 }
