@@ -1,6 +1,7 @@
 const Competition = require("../models/competition.model");
 const Climber = require("../models/climber.model");
 
+//=====
 // NEW
 exports.new = (req, res) => {
     res.render("./competitions/new");
@@ -30,7 +31,7 @@ exports.new_post = (req, res) => {
     });
     
 }
-
+//=======================
 // SHOW /competitions/:id
 exports.show = (req, res) => {
     Competition.findById(req.params.id).populate("Climbers").exec((err, competition) => {
@@ -45,7 +46,7 @@ exports.show = (req, res) => {
         }
     });
 }
-
+// =====
 // EDIT
 exports.edit = (req, res) => {
     Competition.findById(req.params.id).populate("Climbers").exec((err, competition) => {
@@ -83,6 +84,24 @@ exports.update = (req, res) => {
     });
 }
 
+// Add Category
+exports.addCat = (req, res) => {
+    let category = req.body.category;
+    console.log("Category ready to be added to competition.");
+    Competition.findByIdAndUpdate(req.params.id, {$addToSet: {category: category}}, (err, competition) => {
+        if (err) {
+            req.flash("error", err);
+            console.log(err);
+            res.redirect("/competitions/" + req.params.id);
+        } else {
+            console.log("Category added!");
+            req.flash("success", "Category added to " + competition.name);
+            res.redirect("/competitions/" + req.params.id);
+        }
+    });
+}
+
+//=======
 // DELETE
 exports.delete = (req, res) => {
     Competition.findByIdAndRemove(req.params.id, (err) => {
@@ -97,6 +116,7 @@ exports.delete = (req, res) => {
     });
 }
 
+//=======
 // DEFAULT
 exports.default = (req, res) => {
     Competition.find({}, (err, competitions) => {

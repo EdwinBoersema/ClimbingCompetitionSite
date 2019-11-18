@@ -16,7 +16,9 @@ router.get("/:id", competitions_controller.show);
 // EDIT ROUTE
 router.get("/:id/edit", mw.isLoggedIn, competitions_controller.edit);
 
-router.put("/:id", mw.isLoggedIn, competitions_controller.update);
+router.put("/:id/update", mw.isLoggedIn, competitions_controller.update);
+
+router.put("/:id/addcat", mw.isLoggedIn, competitions_controller.addCat);
 
 // DELETE ROUTE
 router.delete("/:id", mw.isLoggedIn, competitions_controller.delete);

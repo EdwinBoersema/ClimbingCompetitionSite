@@ -7,27 +7,26 @@
 </div>
 
 <div class="ui items container">
-        <% for (let i = 0; i < competitions.length; i ++) { %>
-        <div class="ui item grid compItem">
-            <div class="row compTitle">
-                <a href="/competitions/<%= competitions[i]._id%>">
-                <h2><%= competitions[i].name %></h2>
-                </a>
-            </div>
-            <div class="row">
-                <% for (let j = 0; j < competitions[i].category; j ++ ) { %>
-                <div class="four wide collumn compCategory">
-                    <%= competitions[i].category.name[j] + " " + competitions[i].category.gender[j] %>
-                </div>
-                <% } %>
-            </div>
-            <div class="row">
-                <%= competitions[i].info %>
-            </div>
-            <div></div>
+    <% competitions.forEach((competition) => { %>
+    <div class="ui item grid compItem">
+        <div class="row compTitle">
+            <a href="/competitions/<%= competition._id%>">
+                <h2><%= competition.name %></h2>
+            </a>
         </div>
-        <div class="ui divider"></div>
-        <% } %>
+        <div class="row">
+                <% competition.category.forEach((category) => { %>
+                <div class="four wide collumn compCategory">
+                    <%= category.name + " " + category.gender %>
+                </div>
+            <% }); %>
+        </div>
+        <div class="row">
+            <%= competition.info %>
+        </div>
     </div>
+    <div class="ui divider"></div>
+    <% }); %>
+</div>
 
 <% include ../partials/footer %>

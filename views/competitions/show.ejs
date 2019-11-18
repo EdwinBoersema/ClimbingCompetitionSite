@@ -17,7 +17,7 @@
             </div>
             <% for (let i = 0; i < competition.category.length; i++) { %>
             <div class="row">
-                <%= competition.category.name + " " + competition.category.gender %>
+                <%= competition.category[i].name + " " + competition.category[i].gender %>
             </div>
             <% } %>
             <% if(currentUser) { %>

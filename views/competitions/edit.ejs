@@ -2,7 +2,7 @@
 <% include ../partials/compnav %>
 
 <div class="ui container">
-    <form class="ui form" action="/competitions/<%=competition._id%>?_method=PUT" method="POST">
+    <form class="ui form" action="/competitions/<%=competition._id%>/update?_method=PUT" method="POST">
         <h1 class="ui dividing header centered">Edit <%=competition.name%></h1>
         <div class="field">
             <label>Competition Name</label>
@@ -11,11 +11,13 @@
         <div class="two fields">
             <div class="field">
                 <label>Start date</label>
-                <input name="startDate" type="datetime-local" placeholder="Start date" required value="<%=competition.startDate %>">
+                <input name="startDate" type="datetime-local" placeholder="Start date" required
+                    value="<%=competition.startDate %>">
             </div>
             <div class="field">
                 <label>End date</label>
-                <input name="endDate" type="datetime-local" placeholder="End date" required value="<%=competition.endDate %>">
+                <input name="endDate" type="datetime-local" placeholder="End date" required
+                    value="<%=competition.endDate %>">
             </div>
         </div>
         <div class=" field">
@@ -28,22 +30,33 @@
     </form>
 </div>
 
-<!-- <div class=" field">
-        <label>Categories</label>
-        <input name="category[name]" type="text" placeholder="category">
-        <input name="category[gender]" type="text" placeholder="gender">
-        <div class="field">
-            <label>Climbers</label>
-            <select name="category[climbers]" multiple="" class="ui dropdown" name="climbers">
-                <option>Climbers</option>
-                <option value="1">Alex</option>
-                <option value="2">Sam</option>
-                <option value="3">Justin</option>
-                <option value="4">Juan</option>
-                <option value="5">Chris</option>
-                <option value="6">Stephen</option>
-            </select>
+<div class="ui container">
+    <div class="ui divider"></div>
+</div>
+
+<div class="ui container">
+    <form class="ui form" action="/competitions/<%=competition._id%>/addcat?_method=PUT" method="POST">
+        <div class=" field">
+            <label>Add a Category</label>
+            <input name="category[name]" type="text" placeholder="category">
+            <input name="category[gender]" type="text" placeholder="gender">
+            <!-- <div class="field">
+                <label>Climbers</label>
+                <select name="category[climbers]" multiple="" class="ui dropdown" name="climbers">
+                    <option>Climbers</option>
+                    <option value="1">Alex</option>
+                    <option value="2">Sam</option>
+                    <option value="3">Justin</option>
+                    <option value="4">Juan</option>
+                    <option value="5">Chris</option>
+                    <option value="6">Stephen</option>
+                </select>
+            </div> -->
         </div>
-    </div> -->
+        <div class="field">
+            <input class="ui button centered" type="submit" value="Add Category">
+        </div>
+    </form>
+</div>
 
 <% include ../partials/footer %>
